@@ -1,0 +1,42 @@
+[
+    {
+        "id": "67389bb2e8e89",
+        "name": "Athiqul Hasan",
+        "email": "athiqulhasan.4@gmail.com",
+        "password": "$2y$10$6Dln37U.C\/cL1\/kADRL6GeB\/lqsLjvU4ptPUntwCdwU1Aggvb8Grm",
+        "role": "customer",
+        "balance": 6469,
+        "created_at": "2024-11-16 14:18:43",
+        "updated_at": "2024-11-16 17:29:15"
+    },
+    {
+        "id": "6738bc33db7f6",
+        "name": "TestUser",
+        "email": "test@example.us",
+        "password": "$2y$10$AJKJAQYlfX\/nJHCgP6rVTeZy3inKqPEx23EuvQgS6W7CtjSU1y7Ta",
+        "role": "customer",
+        "balance": 47857,
+        "created_at": "2024-11-16 16:37:23",
+        "updated_at": "2024-11-16 17:29:15"
+    },
+    {
+        "id": "673b1bab2afc1",
+        "name": "admin@gmail.com",
+        "email": "admin@gmail.com",
+        "password": "$2y$10$M\/X5x4ZEsypOrrrmnmHI3eSfyTc88nmQmszoGq0TuGov68x07aECa",
+        "role": "admin",
+        "balance": 0,
+        "created_at": "2024-11-18 11:49:15",
+        "updated_at": "2024-11-18 11:49:15"
+    },
+    {
+        "id": "6740c47be3d41",
+        "name": "David Mollick",
+        "email": "david@gmail.com",
+        "password": "$2y$10$vX14f5Bc7pufQOkQb\/G4Z.hF4a7Pllj\/8yArDcyCPxCsj3zJ41KTC",
+        "role": "customer",
+        "balance": 0,
+        "created_at": "2024-11-22 18:50:52",
+        "updated_at": "2024-11-22 18:50:52"
+    }
+]
