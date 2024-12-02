@@ -1,12 +1,17 @@
 <?php 
 namespace App\Models;
 
-use App\core\Contracts\Model;
-use App\core\traits\filesystem\FileDbTrait;
-class Transactions implements Model{
+class Transactions extends Model{
 
-    use FileDbTrait;
-    public $schema='transactions.json';
+    public $schema='transactions';
+
+    public function __construct()
+  {
+      if(DB=='file')
+      {
+        $this->schema.='.json';
+      }
+  }
 }
 
 ?>

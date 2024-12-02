@@ -7,7 +7,7 @@ use Exception;
 trait FileDbTrait
 {
 
-    public function save(array $arrayData)
+    public function fileSave(array $arrayData)
     {
         $file = storage_path($this->schema);
 
@@ -28,7 +28,7 @@ trait FileDbTrait
         
         return $this->saveFile($existingData, $file);
     }
-    public function update($userEmail, array $arrayData)
+    public function fileUpdate($userEmail, array $arrayData)
     {
         $file = storage_path($this->schema);
         
@@ -56,8 +56,8 @@ trait FileDbTrait
         $existingData[$index] = $arrayData;
         return $this->saveFile($existingData,$file);
     }
-    public function delete() {}
-    public function findByEmail($email)
+   
+    public function fileFindByEmail($email)
     {
         $file = storage_path($this->schema);
 
@@ -69,7 +69,7 @@ trait FileDbTrait
         });
         return reset($find) ?: null;
     }
-    public function all($column = '', $value = '')
+    public function fileAll($column = '', $value = '')
     {
         
         $file = storage_path($this->schema);        
@@ -93,9 +93,8 @@ trait FileDbTrait
 
         return $users ?? null;
     }
-    public function paginate($perPage) {}
-    public function count() {}
-    public function where($column, $value)
+  
+    public function fileWhere($column, $value)
     {
 
         $file = storage_path($this->schema);
@@ -107,12 +106,6 @@ trait FileDbTrait
 
         return reset($user) ?: null;
     }
-    public function orderBy($column, $order) {}
-    public function join($table, $foreignKey, $localKey) {}
-    public function with($relations) {}
-    public function whereIn($column, $values) {}
-    public function whereNotIn($column, $values) {}
-    public function first() {}
 
 
     private function loadFile($file) {

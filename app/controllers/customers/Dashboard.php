@@ -15,6 +15,8 @@ class Dashboard{
         $userEmail=$_SESSION['user']['email'];
         $user=$this->userModel->findByEmail($userEmail);
         $transactions=$this->trxModel->all('userEmail',$userEmail);
+
+       // dd($transactions);
         //Make descending sort
         usort($transactions,function($a, $b){
             return strtotime($b['created_at']) <=> strtotime($a['created_at']);
