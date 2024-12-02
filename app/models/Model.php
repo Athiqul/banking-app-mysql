@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\core\Contracts\Model as ContractsModel;
+use App\core\DB;
 use App\core\traits\filesystem\FileDbTrait;
 use App\core\traits\MySqlSystem\SqlModel;
 
@@ -10,6 +11,11 @@ use App\core\traits\MySqlSystem\SqlModel;
 
     class Model implements ContractsModel{
 
+       private $conn;
+        public function __construct()
+        {
+            $this->conn=new DB();          
+        }
         use FileDbTrait,SqlModel;
         
         public function save(array $user){
