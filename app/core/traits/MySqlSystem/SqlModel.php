@@ -83,7 +83,7 @@ trait SqlModel
             $sql = "SELECT * FROM " . $this->schema . " WHERE email=:email";
            $stmt=$this->conn->prepare($sql);
             $stmt->execute([':email' => $email]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            return $stmt->fetch(PDO::FETCH_ASSOC)?:null;
         } catch (PDOException $e) {
             dd($e->getMessage());
         }

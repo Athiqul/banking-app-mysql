@@ -3,7 +3,7 @@
 //For display data and die 
 
 use App\core\RedirectHelper;
-
+use App\Models\User;
 
 function dd($data):void
 {
@@ -37,12 +37,22 @@ function storage_path($path = '') {
 
 function middleware($role)
 {
+
+    
+
     if (!isset($_SESSION['user'])) {
         return redirect()->route('/login')->with(['error','You must be logged in']);
     }
 
     if($_SESSION['user']['role']!==$role) {
 
+        return redirect()->route('/login')->with(['error','You do not have permission to access this page']);
+    }
+
+    $user= new User();
+    $check=$user->fileFindByEmail($_SESSION['user']['email']);
+    if($check==null)
+    {
         return redirect()->route('/login')->with(['error','You do not have permission to access this page']);
     }
 
