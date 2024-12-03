@@ -9,7 +9,14 @@ use PDOException;
 trait SqlModel
 {
 
-    public function sqlSave(array $arrayData)
+   
+    /**
+     * Undocumented function
+     *
+     * @param array $arrayData
+     * @return Array
+     */   
+    public function sqlSave(array $arrayData):array
     {
         unset($arrayData['id']);
        
@@ -27,10 +34,19 @@ trait SqlModel
             return $this->sqlFind($lastId);
         } catch (PDOException $e) {
             dd($e->getMessage());
+
         }
     }
 
-    public function sqlFind(string $id)
+
+    
+    /**
+     * Get single records of particular table by id
+     *
+     * @param string $id 
+     * @return array|null
+     */ 
+    public function sqlFind(string $id):array|null
     {
         try {
             $sql = "SELECT * FROM " . $this->schema . " WHERE id=:id";
