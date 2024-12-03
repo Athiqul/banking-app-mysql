@@ -43,21 +43,32 @@ trait SqlModel
     }
     public function sqlUpdate(string $id, array $arrayData)
     {
+        //dd($arrayData);
         try {
-
-            $check = $this->sqlFind($id);
+            if(filter_var($id,FILTER_VALIDATE_EMAIL))
+            {
+                $check=$this->sqlFindByEmail($id);
+            }else{
+                $check = $this->sqlFind($id);
+            }
+            
             if ($check == null) {
                 return $check;
             }
 
+            unset($arrayData['updated_at']);
+
+            //dd($arrayData);
+
             $columns = array_keys($arrayData);
             $setClause = implode(',', array_map(fn($col) => "$col=:$col", $columns));
-            $sql = "UPDATE TABLE $this->schema SET $setClause,updated_at=:updated_at WHERE id=:id";
+            $sql = "UPDATE $this->schema SET $setClause,updated_at=:updated_at WHERE id=:id";
             $arrayData['updated_at'] = date('Y-m-d');
-            $arrayData['id'] = $id;
+            $arrayData['id'] = $check['id'];
+           // dd($sql);
             $stmt=$this->conn->prepare($sql);
-             $result=$stmt->execute($arrayData);
-            if ($result->rowCount() > 0) {
+            $stmt->execute($arrayData);
+            if ($stmt->rowCount() > 0) {
                 return $this->sqlFind($id);
             }
             return null;
@@ -79,11 +90,18 @@ trait SqlModel
     }
     public function sqlAll($column = '', $value = '')
     {
+       
+        
         try {
             $sql = "SELECT * FROM " . $this->schema;
             if ($column !== '') {
                 $sql .= " WHERE $column=:$column";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->execute([":$column"=>$value]);
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
             } 
+            
+            //dd($sql);
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();

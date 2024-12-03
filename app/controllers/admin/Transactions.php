@@ -16,6 +16,7 @@ class Transactions {
     {
 
              $transactions=$this->transactionsModel->all();
+             //dd($transactions);
              //Get customer name
              $transactionsHistory=[];
              foreach ($transactions as $transaction)

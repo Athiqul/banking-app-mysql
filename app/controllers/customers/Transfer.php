@@ -60,6 +60,7 @@ class Transfer{
           return redirect()->route('/customers-transfer')->withErrors($errors)->withInput($_POST);
         }
         $user = $this->userModel->findByEmail($userEmail);
+       // dd($recUser);
         if(empty($user))
         {
             http_response_code(404);
@@ -91,7 +92,7 @@ class Transfer{
         ];
 
         $transactionReceiver=[
-            'userEmail'=> $recUser->email,
+            'userEmail'=> $recUser['email'],
             'userBalance'=>$recUser['balance'],
             'type'=>3,
             'amount'=>$amount,

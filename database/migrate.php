@@ -22,17 +22,17 @@ $queryUser="
 $queryTransactions = "
     CREATE TABLE IF NOT EXISTS transactions (
         id INT AUTO_INCREMENT PRIMARY KEY,            
-        userId INT NOT NULL,
         userEmail VARCHAR(255) NOT NULL,              
         userBalance INT(12) NOT NULL,        
         type INT NOT NULL,                            
         amount INT(10) NOT NULL,                
         trxid VARCHAR(255) NOT NULL UNIQUE,                  
-        receiverId INT DEFAULT NULL,        
+        receiverName VARCHAR(255) DEFAULT NULL,
+        receiverEmail VARCHAR(255) DEFAULT NULL, 
+        balance_added INT DEFAULT 0,       
         created_at DATETIME DEFAULT NULL,            
-        updated_at DATETIME DEFAULT NULL, 
-        CONSTRAINT user_fk FOREIGN KEY(userId) References users(id),            
-        CONSTRAINT user_receiver_fk FOREIGN KEY(receiverId) References users(id)
+        updated_at DATETIME DEFAULT NULL         
+        
     )
 ";
 try {
