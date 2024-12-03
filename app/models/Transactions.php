@@ -11,6 +11,7 @@ class Transactions extends Model{
       {
         $this->schema.='.json';
       }
+      parent::__construct();
   }
 }
 

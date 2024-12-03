@@ -9,7 +9,7 @@ class DB{
    public function connect()
    {
        try {
-        if($this->conn!==null)
+        if($this->conn!=null)
         {
             return $this->conn;//already connected
         }

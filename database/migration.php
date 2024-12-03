@@ -22,7 +22,8 @@ $queryUser="
 $queryTransactions = "
     CREATE TABLE IF NOT EXISTS transactions (
         id INT AUTO_INCREMENT PRIMARY KEY,            
-        userId INT NOT NULL,              
+        userId INT NOT NULL,
+        userEmail VARCHAR(255) NOT NULL,              
         userBalance INT(12) NOT NULL,        
         type INT NOT NULL,                            
         amount INT(10) NOT NULL,                

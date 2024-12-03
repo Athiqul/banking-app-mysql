@@ -12,6 +12,8 @@ class User extends Model{
       {
         $this->schema.='.json';
       }
+
+      parent::__construct();
   }
 }
 

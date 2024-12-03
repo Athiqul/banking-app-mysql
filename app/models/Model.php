@@ -14,7 +14,10 @@ use App\core\traits\MySqlSystem\SqlModel;
        private $conn;
         public function __construct()
         {
-            $this->conn=new DB();          
+            $db=new DB();
+            $this->conn=$db->connect();
+           
+                     
         }
         use FileDbTrait,SqlModel;
         
